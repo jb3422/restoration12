@@ -88,6 +88,70 @@
       display: inline-block;
       margin-top: 20px;
     }
+    /* Modal background */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    /* Modal content box */
+    .modal-content {
+      background-color: #3A73B8;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      color: #fff;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content h2 {
+      color: #D4AF37;
+      margin-top: 0;
+    }
+
+    .modal-content p,
+    .modal-content ul,
+    .modal-content li {
+      color: #fff;
+    }
+
+    .modal-content ul {
+      padding-left: 20px;
+    }
+
+    .close {
+      color: #D4AF37;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .modal-body {
+      margin-top: 20px;
+    }
     footer {
       background: #333;
       color: #fff;
@@ -153,11 +217,152 @@
   <footer>
     &copy; 2025 Restoration Twelve. All rights reserved.
     <br/>
-    <a href="#">About</a> | 
-    <a href="#">Privacy Policy</a> | 
-    <a href="#">Terms of Service</a> | 
+    <a href="javascript:void(0);" id="aboutBtn">About</a> | 
+    <a href="javascript:void(0);" id="privacyBtn">Privacy Policy</a> | 
+    <a href="javascript:void(0);" id="termsBtn">Terms of Service</a> | 
     <a href="mailto:bachjames@comcast.net?subject=Early%20Access%20Request">Contact</a>
   </footer>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close-about">&times;</span>
+      <h2>About Restoration Twelve</h2>
+      <div class="modal-body">
+        <p>
+          Restoration Twelve is a faith-based recovery platform created to help individuals find hope, healing, and community support in their journey toward sobriety. Our mission is to blend proven recovery principles with the power of faith and spiritual encouragement.
+        </p>
+        <p>
+          The app offers daily reflections tied to scripture, tools to track sobriety milestones, and opportunities to connect with sponsors and Christian recovery groups both locally and online.
+        </p>
+        <p>
+          Restoration Twelve was founded by James Bach, an engineer with over a decade of experience designing and managing advanced communications systems in the defense industry. Beyond his professional career, James has walked through seasons of personal challenges, including mental health struggles and substance abuse, and discovered profound spiritual transformation. His passion is to combine technology and faith to help others navigate the path to recovery with hope and support.
+        </p>
+        <p>
+          Whether you’re beginning your journey or have been walking it for years, Restoration Twelve is here to remind you that with faith, restoration is possible.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Privacy Policy</h2>
+      <div class="modal-body">
+        <p>
+          Restoration Twelve values your privacy. We collect only the minimum personal data necessary to provide you with our services. Your personal information will never be sold or shared with third parties without your consent, except where required by law.
+        </p>
+        <p>
+          Information we may collect includes:
+        </p>
+        <ul>
+          <li>Email address for communication and account access</li>
+          <li>Profile details voluntarily provided (e.g. sobriety date, age, gender)</li>
+          <li>Usage data to improve app performance and features</li>
+        </ul>
+        <p>
+          All data is securely stored and encrypted where appropriate. You have the right to access, modify, or request deletion of your personal information at any time. Please contact us for any privacy-related inquiries.
+        </p>
+        <p>
+          By using Restoration Twelve, you agree to this privacy policy and our terms of service.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-terms">&times;</span>
+      <h2>Terms of Service</h2>
+      <div class="modal-body">
+        <p>
+          Welcome to Restoration Twelve. By accessing or using our website, mobile applications, and related services (collectively, the "Services"), you agree to comply with and be bound by these Terms of Service.
+        </p>
+        <h3>Use of Services</h3>
+        <p>
+          Restoration Twelve is designed to support individuals in recovery by providing faith-based resources and community connections. You agree to use our Services for lawful purposes only.
+        </p>
+        <h3>User Accounts</h3>
+        <p>
+          To access certain features, you may be required to create an account. You agree to provide accurate and complete information and to maintain the confidentiality of your account credentials.
+        </p>
+        <h3>Content and Intellectual Property</h3>
+        <p>
+          All content, including text, graphics, logos, and software, is the property of Restoration Twelve or its licensors and is protected by copyright and other laws. You may not copy, distribute, or reproduce any part of the Services without permission.
+        </p>
+        <h3>Privacy</h3>
+        <p>
+          Your use of the Services is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information.
+        </p>
+        <h3>Limitation of Liability</h3>
+        <p>
+          Restoration Twelve provides services on an "as is" basis. We do not guarantee that the Services will be uninterrupted or error-free. Restoration Twelve is not liable for any damages arising from your use of the Services.
+        </p>
+        <h3>Changes to Terms</h3>
+        <p>
+          We reserve the right to update these Terms of Service at any time. Changes become effective once posted on our website. Your continued use of the Services constitutes acceptance of the revised terms.
+        </p>
+        <p>
+          If you have any questions regarding these Terms of Service, please contact us.
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script>
+    // Privacy Modal
+    var privacyModal = document.getElementById("privacyModal");
+    var privacyBtn = document.getElementById("privacyBtn");
+    var privacyClose = document.getElementsByClassName("close")[0];
+
+    privacyBtn.onclick = function() {
+      privacyModal.style.display = "block";
+    }
+    privacyClose.onclick = function() {
+      privacyModal.style.display = "none";
+    }
+
+    // Terms Modal
+    var termsModal = document.getElementById("termsModal");
+    var termsBtn = document.getElementById("termsBtn");
+    var termsClose = document.getElementsByClassName("close-terms")[0];
+
+    termsBtn.onclick = function() {
+      termsModal.style.display = "block";
+    }
+    termsClose.onclick = function() {
+      termsModal.style.display = "none";
+    }
+
+    // About Modal
+    var aboutModal = document.getElementById("aboutModal");
+    var aboutBtn = document.getElementById("aboutBtn");
+    var aboutClose = document.getElementsByClassName("close-about")[0];
+
+    aboutBtn.onclick = function() {
+      aboutModal.style.display = "block";
+    }
+
+    aboutClose.onclick = function() {
+      aboutModal.style.display = "none";
+    }
+
+    // Close modal if user clicks outside either modal
+    window.onclick = function(event) {
+      if (event.target == privacyModal) {
+        privacyModal.style.display = "none";
+      }
+      if (event.target == termsModal) {
+        termsModal.style.display = "none";
+      }
+      if (event.target == aboutModal) {
+      aboutModal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
